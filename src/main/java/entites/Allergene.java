@@ -23,8 +23,7 @@ public class Allergene {
 		for(int i = 0 ; i <m.length;i++){
 			
 			liste.add(new Allergene(m[i].trim()));
-			
-			
+					
 		}
 		
 		return liste;
@@ -39,6 +38,12 @@ public class Allergene {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+	
+	public String toString(){
+		
+		return this.libelle;
+		
 	}
 
 	

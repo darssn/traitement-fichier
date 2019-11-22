@@ -7,42 +7,45 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
+import entites.Additif;
 import entites.Allergene;
-
 import entites.Produit;
 import entites.Stock;
 
-public class AllergeneCourant extends Recherche {
+public class AdditifCourant extends Recherche {
 
 	@Override
 	public void traiter(Stock stock, Scanner scanner) throws Exception {
 
 		List<Produit> produits = stock.getListeProduit();
 
-		HashMap<String, Integer> al = new HashMap<>();
+		HashMap<String, Integer> ad = new HashMap<>();
 
-		TreeMap newAl = new TreeMap(new Comparateur(al));
+		TreeMap newAl = new TreeMap(new Comparateur(ad));
 
 		for (Produit p : produits) {
 
-			for (Allergene a : p.getListeAllergene()) {
+			
 
-				String alergene = a.getLibelle().toLowerCase().trim();
-				Integer ale = al.get(alergene);
+				for (Additif a : p.getListeAdditif()) {
 
-				if (ale == null) {
-					ale = 0;
+					String additif = a.getLibelle().toLowerCase().trim();
+					Integer num = ad.get(additif);
+
+					if (num == null) {
+						num = 0;
+					}
+
+					num++;
+
+					ad.put(additif, num);
+
 				}
-
-				ale++;
-
-				al.put(alergene, ale);
-
-			}
+			
 
 		}
 
-		newAl.putAll(al);
+		newAl.putAll(ad);
 
 		Set<String> t = newAl.keySet();
 		Iterator<String> iter = t.iterator();
@@ -51,10 +54,10 @@ public class AllergeneCourant extends Recherche {
 		while (iter.hasNext() && count < 10) {
 
 			String nom = iter.next();
-			Integer compteur = al.get(nom);
+			Integer compteur = ad.get(nom);
 			count++;
 
-			System.out.println("Allergene : " + nom + " - Nb d'occurence : " + compteur);
+			System.out.println("Additif : " + nom + " - Nb d'occurence : " + compteur);
 
 		}
 	}

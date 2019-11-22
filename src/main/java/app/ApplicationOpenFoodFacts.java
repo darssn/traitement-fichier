@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 
 import entites.Stock;
+import recherche.AdditifCourant;
 import recherche.AllergeneCourant;
 import recherche.RechercheCatMarque;
 import recherche.RechercheProduitCategorie;
@@ -72,9 +73,9 @@ public class ApplicationOpenFoodFacts {
 				break;
 			case 4:
 				
-				AllergeneCourant AllergeneC = new AllergeneCourant();
+				AllergeneCourant allergeneC = new AllergeneCourant();
 				try {
-					AllergeneC.traiter(stock, scanner);
+					allergeneC.traiter(stock, scanner);
 				} catch (Exception e) {
 
 					e.printStackTrace();
@@ -83,6 +84,16 @@ public class ApplicationOpenFoodFacts {
 				}
 				break;
 			case 5:
+				AdditifCourant additifC = new AdditifCourant();
+				try {
+					additifC.traiter(stock, scanner);
+				} catch (Exception e) {
+
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+
+				}
+				
 				break;
 
 			default:

@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 
 import entites.Stock;
+import recherche.RechercheProduitMarque;
 import utils.Menu;
 import utils.StockUtils;
 
@@ -14,7 +15,7 @@ public class ApplicationOpenFoodFacts {
 		
 		Stock stock = StockUtils.lire(path);
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		
 		if (stock == null) {
 			System.out.println("L'application doit s'arrétée en raison d'une erreur d'exécution.");
@@ -26,11 +27,21 @@ public class ApplicationOpenFoodFacts {
 		
 		do{
 			Menu.affichMenu();	
-			choixMenu = Integer.parseInt(sc.nextLine());
+			choixMenu = Integer.parseInt(scanner.nextLine());
 			
 		switch(choixMenu){
 		
 		case 1 :
+			RechercheProduitMarque rechercheMarque = new RechercheProduitMarque();
+			try {
+				rechercheMarque.traiter(stock,scanner);
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+				
+			}
+			
 			break;
 		case 2 :
 			break ;
@@ -56,7 +67,7 @@ public class ApplicationOpenFoodFacts {
 		
 		System.out.println("Au revoir ");
 		
-		sc.close();
+		scanner.close();
 	}
 
 }

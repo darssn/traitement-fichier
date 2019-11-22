@@ -1,5 +1,8 @@
 package entites;
 
+import java.util.List;
+
+
 public class Marque {
 
 	
@@ -19,6 +22,27 @@ public class Marque {
 		this.libelle = libelle;
 	}
 	
+	public static boolean exists(Stock stock ,String marque){
+		
+			
+			boolean e = false;
+			
+			List<Produit> listeProduits = stock.getListeProduit();
+			
+			for(Produit p : listeProduits){
+				
+				if(p.getMarque().getLibelle().equalsIgnoreCase(marque)){
+					
+					return true;
+				}
+				
+			}
+			
+			return e;
+			
+			
+		}
+		
+	}
 	
 
-}

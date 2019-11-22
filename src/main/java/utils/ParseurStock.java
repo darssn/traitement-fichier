@@ -2,9 +2,9 @@ package utils;
 
 import entites.Stock;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class ParseurStock {
 		String nlTemp = nomLigne.replace('|', '_');
 		String[] nomLigneTab = nlTemp.split("_");
 
-		Map<String, String> mapLigne = new HashMap<>();
+
 
 		String nom = m[0];
 		String scoreN = m[1];

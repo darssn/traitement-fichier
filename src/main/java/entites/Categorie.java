@@ -1,5 +1,7 @@
 package entites;
 
+import java.util.List;
+
 public class Categorie {
 	
 	
@@ -19,6 +21,27 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 
+	
+	public static boolean exists(Stock stock ,String cat){
+		
+		
+		boolean e = false;
+		
+		List<Produit> listeProduits = stock.getListeProduit();
+		
+		for(Produit p : listeProduits){
+			
+			if(p.getCategorie().getLibelle().equalsIgnoreCase(cat)){
+				
+				return true;
+			}
+			
+		}
+		
+		return e;
+		
+		
+	}
 	
 
 }

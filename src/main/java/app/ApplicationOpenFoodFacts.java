@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 
 import entites.Stock;
+import recherche.RechercheProduitCategorie;
 import recherche.RechercheProduitMarque;
 import utils.Menu;
 import utils.StockUtils;
@@ -44,6 +45,16 @@ public class ApplicationOpenFoodFacts {
 			
 			break;
 		case 2 :
+			
+			RechercheProduitCategorie rechercheCategorie = new RechercheProduitCategorie();
+			try {
+				rechercheCategorie.traiter(stock,scanner);
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+				
+			}
 			break ;
 		case 3 :
 			break;

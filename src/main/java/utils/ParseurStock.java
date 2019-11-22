@@ -19,18 +19,16 @@ public class ParseurStock {
 
 	public static void ajoutLigne(Stock stock, String ligne, String nomLigne) {
 
-		String m1 = ligne.replace('|', '_');
+		String m1 = ligne.replace('|', '@');
 
 		m1 = m1.replace('[', ' ');
 		m1 = m1.replace(']', ' ');
 
-		String[] m = m1.split("_");
+		String[] m = m1.split("@");
 
-		String nlTemp = nomLigne.replace('|', '_');
-		String[] nomLigneTab = nlTemp.split("_");
-
-
-
+		String nlTemp = nomLigne.replace('|', '@');
+		String[] nomLigneTab = nlTemp.split("@");
+		
 		String nom = m[0];
 		String scoreN = m[1];
 		Categorie cat = new Categorie(m[2]);
